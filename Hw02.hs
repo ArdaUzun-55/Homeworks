@@ -151,7 +151,7 @@ prop_barIdempotent xs = bar xs == bar (bar xs)
 --------------------------------------------------------------------------------
 
 -- CONTRACT [TODO]
--- f ::
+f :: (Num a, Ord a) => a −> a
 -- Dummy definition to avoid error message - please ignore
-f = undefined
+f = a + a = a
 --------------------------------------------------------------------------------
