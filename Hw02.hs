@@ -17,13 +17,12 @@ example_taxiDistance_2 = abs(3-1)+ abs(5-2) == 5
 taxiDistance (x0, y0) (x1, y1) = abs(x1-x0)+abs(y1-y0)
 
 -- TESTS [TODO]
-prop_taxiDistance_alwaysgreaterthanorequal (x0, y0) (x1, y1) = abs(x1-x0)+abs(y1-y0) >= 0
+prop_taxiDistance_nonnegativifity (x0, y0) (x1, y1) = abs(x1-x0)+abs(y1-y0) >= 0
 prop_taxiDistance_orderdoesntmatter (x0, y0) (x1, y1) = abs(y1-y0)+ abs(x1-x0) == abs(x1-x0)+abs(y1-y0)
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
 iff :: Bool -> Bool -> Bool
-iffC :: Bool -> Bool -> Bool
 
 -- PURPOSE [TODO]
 -- The two-argument function iff returns True exactly when both Boolean operands have the same value. Otherwise it returns False. 
@@ -32,8 +31,6 @@ example_iff_1 = True False == False
 example_iff_2 = True True == True
 -- DEFINITION [TODO]
 iff = [iffC, iffG, iffP, iffB] !! 0
-iffC a b = if a then(if b then True else False)
-           else(if b then False else True)
 -- TESTS [TODO]
 prop_iff_eq x y = undefined
 
@@ -42,37 +39,44 @@ prop_iff_eq x y = undefined
 iffC :: Bool -> Bool -> Bool
 
 -- DEFINITION [TODO]
-iffC x y = undefined
+iffC x y = if x then(if y then True else False)
+           else(if y then False else True)
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
 iffG :: Bool -> Bool -> Bool
 
 -- DEFINITION [TODO]
-iffG x y = undefined
+iffG x y
+  | x && y = True 
+  | not x && not y = True
+  | otherwise = False
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
 iffP :: Bool -> Bool -> Bool
 
 -- DEFINITION [TODO]
-iffP x y = undefined
+iffP True True = True
+iffP True False = False
+iffP False True = False
+iffP False False = True
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
 iffB :: Bool -> Bool -> Bool
 
 -- DEFINITION [TODO]
-iffB x y = undefined
+iffB x y = (not x && not y) || (x && y)
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
--- myTail :: ??
+myTail :: [a] -> [a]
 
 -- PURPOSE [TODO]
-
+-- return tail and empty list
 -- EXAMPLES [TODO]
-
+example_myTail_01 = [] == 0
 -- DEFINITION [TODO]
 myTail = [myTailCond, myTailGuard, myTailMatch] !! 0
 
@@ -86,33 +90,37 @@ prop_TailEquivalent xs = cs == ms && cs == gs
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
--- myTailCond :: ??
+myTailCond :: [a] -> [a]
 
 -- DEFINITION [TODO]
-myTailCond xs  = undefined
+myTailCond xs  = if null xs then [] else tail xs
+                 
+--------------------------------------------------------------------------------
+-- CONTRACT [TODO]
+myTailGuard :: [a] -> [a]
+
+-- DEFINITION [TODO]
+myTailGuard xs 
+ | null xs = []
+ | otherwise = tail xs
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
--- myTailGuard :: ??
+myTailMatch :: [a] -> [a]
 
 -- DEFINITION [TODO]
-myTailGuard xs  = undefined
-
---------------------------------------------------------------------------------
--- CONTRACT [TODO]
--- myTailMatch :: ??
-
--- DEFINITION [TODO]
-myTailMatch xs  = undefined
+myTailMatch [] = [] 
+myTailMatch (_:xs) = xs
 
 --------------------------------------------------------------------------------
 -- CONTRACT
 foo :: String -> String
 
 -- PURPOSE [TODO]
-
+-- Lower the Head and then lower the head of the tail till everything is lowered and its empty
 -- EXAMPLES [TODO]
-
+example_foo_01 = foo(F:UN) == "fun" 
+example_foo_02 = foo(H:ASKELL) == "Haskell" 
 -- DEFINITION
 foo [] = []
 foo (x:xs) = toLower x : foo xs
@@ -126,9 +134,10 @@ prop_fooOrderPreserving xs = foo xs == reverse (foo (reverse xs))
 bar :: String -> String
 
 -- PURPOSE [TODO]
-
+-- capitalizes the next letter if the previous character was a space
 -- EXAMPLES [TODO]
-
+example_bar_01 = bar "haskell fun" == "Haskell Fun"
+example_bar_02 = bar "letterif" == "Letterif"
 -- DEFINITION
 bar xs = helper True xs
   where
