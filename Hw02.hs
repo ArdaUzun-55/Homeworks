@@ -101,8 +101,8 @@ myTailGuard :: [a] -> [a]
 
 -- DEFINITION [TODO]
 myTailGuard xs 
- | null xs = []
- | otherwise = tail xs
+myTailGuard | null xs = []
+myTailGuard | otherwise = tail xs
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
