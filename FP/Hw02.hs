@@ -1,8 +1,8 @@
 module Ex02 where
 
-import Test.QuickCheck
+-- import Test.QuickCheck
 
--- The following line is required for the functions LowerWord and CapitalizeFirstLetter below
+-- The following line is required for the functions lowerWord and capitalizeFirstLetter below
 import Data.Char
 
 --------------------------------------------------------------------------------
@@ -19,8 +19,6 @@ taxiDistance (x0, y0) (x1, y1) = abs(x1-x0)+abs(y1-y0)
 -- TESTS [TODO]
 prop_taxiDistance_nonnegativifity (x0, y0) (x1, y1) = abs(x1-x0)+abs(y1-y0) >= 0
 prop_taxiDistance_orderdoesntmatter (x0, y0) (x1, y1) = abs(y1-y0)+ abs(x1-x0) == abs(x1-x0)+abs(y1-y0)
-prop_taxiDistance_orderdoesntmatter (x0, y0) (x1, y1) = abs(y1-y0)+ abs(x1-x0) == abs(x1-x0)+abs(y1-y0)
-prop_taxiDistance_orderdoesntmatter (x0, y0) (x0, y0) = abs(y0-y0)- abs(x0-x0) == 0
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
@@ -49,10 +47,9 @@ iffC x y = if x then(if y then True else False)
 iffG :: Bool -> Bool -> Bool
 
 -- DEFINITION [TODO]
-iffG x y
-iffG  | x && y = True 
-iffG | not x && not y = True
-iffG  | otherwise = False
+iffG x y |  x && y = True 
+iffG x y | not x && not y = True
+iffG x y | otherwise = False
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
@@ -102,9 +99,8 @@ myTailCond xs  = if null xs then [] else tail xs
 myTailGuard :: [a] -> [a]
 
 -- DEFINITION [TODO]
-myTailGuard xs 
-myTailGuard | null xs = []
-myTailGuard | otherwise = tail xs
+myTailGuard xs  | null xs = []
+myTailGuard xs  | otherwise = tail xs
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
@@ -116,39 +112,39 @@ myTailMatch (_:xs) = xs
 
 --------------------------------------------------------------------------------
 -- CONTRACT
-LowerWord :: String -> String
+lowerWord :: String -> String
 
 -- PURPOSE [TODO]
 -- Lower the Head and then lower the head of the tail till everything is lowered and its empty
 -- EXAMPLES [TODO]
-example_LowerWord_01 = LowerWord(F:UN) == "fun" 
-example_LowerWord_02 = LowerWord(H:ASKELL) == "haskell" 
+example_lowerWord_01 = lowerWord(F:UN) == "fun" 
+example_lowerWord_02 = lowerWord(H:ASKELL) == "haskell" 
 -- DEFINITION
-LowerWord [] = []
-LowerWord (x:xs) = toLower x : LowerWord xs
+lowerWord [] = []
+lowerWord (x:xs) = toLower x : lowerWord xs
 
 -- TESTS
-prop_LowerWordIdempotent xs = LowerWord xs == LowerWord (LowerWord xs)
-prop_LowerWordOrderPreserving xs = LowerWord xs == reverse (LowerWord (reverse xs))
+prop_lowerWordIdempotent xs = lowerWord xs == lowerWord (lowerWord xs)
+prop_lowerWordOrderPreserving xs = lowerWord xs == reverse (lowerWord (reverse xs))
 
 --------------------------------------------------------------------------------
 -- CONTRACT
-CapitalizeFirstLetter :: String -> String
+capitalizeFirstLetter :: String -> String
 
 -- PURPOSE [TODO]
 -- capitalizes the next letter if the previous character was a space
 -- EXAMPLES [TODO]
-example_CapitalizeFirstLetter_01 = CapitalizeFirstLetter "haskell fun" == "Haskell Fun"
-example_CapitalizeFirstLetter_02 = CapitalizeFirstLetter "letterif" == "Letterif"
+example_capitalizeFirstLetter_01 = capitalizeFirstLetter "haskell fun" == "Haskell Fun"
+example_capitalizeFirstLetter_02 = capitalizeFirstLetter "letterif" == "Letterif"
 -- DEFINITION
-CapitalizeFirstLetter xs = helper True xs
+capitalizeFirstLetter xs = helper True xs
   where
     helper up [] = []
     helper up (x:xs) =
       (if up then toUpper x else x) : helper (isSpace x) xs
 
 -- TESTS
-prop_CapitalizeFirstLetterIdempotent xs = CapitalizeFirstLetter xs == CapitalizeFirstLetter (CapitalizeFirstLetter xs)
+prop_capitalizeFirstLetterIdempotent xs = capitalizeFirstLetter xs == capitalizeFirstLetter (capitalizeFirstLetter xs)
 
 --------------------------------------------------------------------------------
 
