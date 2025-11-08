@@ -2,7 +2,7 @@ module Ex02 where
 
 import Test.QuickCheck
 
--- The following line is required for the functions foo and bar below
+-- The following line is required for the functions LowerWord and CapitalizeFirstLetter below
 import Data.Char
 
 --------------------------------------------------------------------------------
@@ -19,6 +19,8 @@ taxiDistance (x0, y0) (x1, y1) = abs(x1-x0)+abs(y1-y0)
 -- TESTS [TODO]
 prop_taxiDistance_nonnegativifity (x0, y0) (x1, y1) = abs(x1-x0)+abs(y1-y0) >= 0
 prop_taxiDistance_orderdoesntmatter (x0, y0) (x1, y1) = abs(y1-y0)+ abs(x1-x0) == abs(x1-x0)+abs(y1-y0)
+prop_taxiDistance_orderdoesntmatter (x0, y0) (x1, y1) = abs(y1-y0)+ abs(x1-x0) == abs(x1-x0)+abs(y1-y0)
+prop_taxiDistance_orderdoesntmatter (x0, y0) (x0, y0) = abs(y0-y0)- abs(x0-x0) == 0
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
@@ -32,7 +34,7 @@ example_iff_2 = True True == True
 -- DEFINITION [TODO]
 iff = [iffC, iffG, iffP, iffB] !! 0
 -- TESTS [TODO]
-prop_iff_eq x y = undefined
+prop_iff_eq x y = (iff x y) == (x == y)
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
@@ -48,9 +50,9 @@ iffG :: Bool -> Bool -> Bool
 
 -- DEFINITION [TODO]
 iffG x y
-  | x && y = True 
-  | not x && not y = True
-  | otherwise = False
+iffG  | x && y = True 
+iffG | not x && not y = True
+iffG  | otherwise = False
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
@@ -114,44 +116,44 @@ myTailMatch (_:xs) = xs
 
 --------------------------------------------------------------------------------
 -- CONTRACT
-foo :: String -> String
+LowerWord :: String -> String
 
 -- PURPOSE [TODO]
 -- Lower the Head and then lower the head of the tail till everything is lowered and its empty
 -- EXAMPLES [TODO]
-example_foo_01 = foo(F:UN) == "fun" 
-example_foo_02 = foo(H:ASKELL) == "Haskell" 
+example_LowerWord_01 = LowerWord(F:UN) == "fun" 
+example_LowerWord_02 = LowerWord(H:ASKELL) == "haskell" 
 -- DEFINITION
-foo [] = []
-foo (x:xs) = toLower x : foo xs
+LowerWord [] = []
+LowerWord (x:xs) = toLower x : LowerWord xs
 
 -- TESTS
-prop_fooIdempotent xs = foo xs == foo (foo xs)
-prop_fooOrderPreserving xs = foo xs == reverse (foo (reverse xs))
+prop_LowerWordIdempotent xs = LowerWord xs == LowerWord (LowerWord xs)
+prop_LowerWordOrderPreserving xs = LowerWord xs == reverse (LowerWord (reverse xs))
 
 --------------------------------------------------------------------------------
 -- CONTRACT
-bar :: String -> String
+CapitalizeFirstLetter :: String -> String
 
 -- PURPOSE [TODO]
 -- capitalizes the next letter if the previous character was a space
 -- EXAMPLES [TODO]
-example_bar_01 = bar "haskell fun" == "Haskell Fun"
-example_bar_02 = bar "letterif" == "Letterif"
+example_CapitalizeFirstLetter_01 = CapitalizeFirstLetter "haskell fun" == "Haskell Fun"
+example_CapitalizeFirstLetter_02 = CapitalizeFirstLetter "letterif" == "Letterif"
 -- DEFINITION
-bar xs = helper True xs
+CapitalizeFirstLetter xs = helper True xs
   where
     helper up [] = []
     helper up (x:xs) =
       (if up then toUpper x else x) : helper (isSpace x) xs
 
 -- TESTS
-prop_barIdempotent xs = bar xs == bar (bar xs)
+prop_CapitalizeFirstLetterIdempotent xs = CapitalizeFirstLetter xs == CapitalizeFirstLetter (CapitalizeFirstLetter xs)
 
 --------------------------------------------------------------------------------
 
 -- CONTRACT [TODO]
 f :: (Num a, Ord a) => a −> a
 -- Dummy definition to avoid error message - please ignore
-f = a + a = a
+f = undefined
 --------------------------------------------------------------------------------
