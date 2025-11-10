@@ -17,8 +17,9 @@ taxiDistance :: (Float, Float) -> (Float, Float) -> Float
 taxiDistance (x0, y0) (x1, y1) = abs(x1-x0)+abs(y1-y0)
 
 -- TESTS [TODO]
-prop_taxiDistance_nonnegativifity (x0, y0) (x1, y1) = abs(x1-x0)+abs(y1-y0) >= 0
-prop_taxiDistance_orderdoesntmatter (x0, y0) (x1, y1) = abs(y1-y0)+ abs(x1-x0) == abs(x1-x0)+abs(y1-y0)
+prop_taxiDistance_nonnegativifity (x0, y0) (x1, y1) = taxiDistance (x0, y0) (x1, y1) >= 0
+prop_taxiDistance_orderdoesntmatter (x0, y0) (x1, y1) = taxiDistance (x0, y0) (x1, y1) == taxiDistance (x1, y1) (x0, y0)
+prop_taxiDistance_identity (x0, y0) (x1, y1) = taxiDistance (x0, y0) (x0, y0) == 0
 
 --------------------------------------------------------------------------------
 -- CONTRACT [TODO]
