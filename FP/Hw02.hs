@@ -149,7 +149,7 @@ prop_capitalizeFirstLetterIdempotent xs = capitalizeFirstLetter xs == capitalize
 --------------------------------------------------------------------------------
 
 -- CONTRACT [TODO]
-f :: (Num a, Ord a) => a −> a
+f :: (Num a, Ord a) => a -> a
 -- Dummy definition to avoid error message - please ignore
 f = undefined
 --------------------------------------------------------------------------------
