@@ -11,8 +11,8 @@ taxiDistance :: (Float, Float) -> (Float, Float) -> Float
 -- PURPOSE [TODO]
 -- Computing the the TaxiCab distance between two points.
 -- EXAMPLES [TODO]
-example_taxiDistance_1 = abs(2-1)+ abs(4-2) == 3
-example_taxiDistance_2 = abs(3-1)+ abs(5-2) == 5
+-- example_taxiDistance_1 = abs(2-1)+ abs(4-2) == 3
+-- example_taxiDistance_2 = abs(3-1)+ abs(5-2) == 5
 -- DEFINITION [TODO]
 taxiDistance (x0, y0) (x1, y1) = abs(x1-x0)+abs(y1-y0)
 
@@ -27,8 +27,8 @@ iff :: Bool -> Bool -> Bool
 -- PURPOSE [TODO]
 -- The two-argument function iff returns True exactly when both Boolean operands have the same value. Otherwise it returns False. 
 -- EXAMPLES [TODO]
-example_iff_1 = True False == False
-example_iff_2 = True True == True
+-- example_iff_1 = True False == False
+-- example_iff_2 = True True == True
 -- DEFINITION [TODO]
 iff = [iffC, iffG, iffP, iffB] !! 0
 -- TESTS [TODO]
@@ -75,7 +75,7 @@ myTail :: [a] -> [a]
 -- PURPOSE [TODO]
 -- return tail and empty list
 -- EXAMPLES [TODO]
-example_myTail_01 = [] == 0
+-- example_myTail_01 = [] == 0
 -- DEFINITION [TODO]
 myTail = [myTailCond, myTailGuard, myTailMatch] !! 0
 
@@ -117,8 +117,8 @@ lowerWord :: String -> String
 -- PURPOSE [TODO]
 -- Lower the Head and then lower the head of the tail till everything is lowered and its empty
 -- EXAMPLES [TODO]
-example_lowerWord_01 = lowerWord(F:UN) == "fun" 
-example_lowerWord_02 = lowerWord(H:ASKELL) == "haskell" 
+-- example_lowerWord_01 = lowerWord(F:UN) == "fun" 
+-- example_lowerWord_02 = lowerWord(H:ASKELL) == "haskell" 
 -- DEFINITION
 lowerWord [] = []
 lowerWord (x:xs) = toLower x : lowerWord xs
@@ -134,8 +134,8 @@ capitalizeFirstLetter :: String -> String
 -- PURPOSE [TODO]
 -- capitalizes the next letter if the previous character was a space
 -- EXAMPLES [TODO]
-example_capitalizeFirstLetter_01 = capitalizeFirstLetter "haskell fun" == "Haskell Fun"
-example_capitalizeFirstLetter_02 = capitalizeFirstLetter "letterif" == "Letterif"
+-- example_capitalizeFirstLetter_01 = capitalizeFirstLetter "haskell fun" == "Haskell Fun"
+-- example_capitalizeFirstLetter_02 = capitalizeFirstLetter "letterif" == "Letterif"
 -- DEFINITION
 capitalizeFirstLetter xs = helper True xs
   where
