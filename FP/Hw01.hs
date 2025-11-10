@@ -118,8 +118,8 @@ question2 foo bar baz = reverseString foo
 
 --------------------------------------------------------------------------------
 -- DEFINITION
-question3 foo bar baz = baz ++ dropCharacters 7 bar
+question3 foo bar baz = appendString baz (dropCharacters 7 bar) 
 
 --------------------------------------------------------------------------------
 -- DEFINITION
-question4 foo bar baz = takeCharacters 5 (reverseString foo) ++ takeCharacters 6 (dropCharacters 6 (reverseString foo))
+question4 foo bar baz = appendString((takeCharacters 5 (reverseString foo))  (takeCharacters 6 (dropCharacters 6 (reverseString foo))))
