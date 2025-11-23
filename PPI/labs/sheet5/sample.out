@@ -1,0 +1,17 @@
+ERROR: MAX Anzahl
+Spieler: Cebra Monty Peter-15 Paul-59 Maria-45
+Start: Peter
+Spieler: Peter; Zahl: 4; Position: A 4
+Spieler: Paul; Zahl: 1; Position: A 1
+Spieler: Maria; Zahl: 2; Position: A 2
+Spieler: Cebra; Zahl: 6; Position: E 6
+Spieler: Monty; Zahl: 3; Position: A 3
+Spieler: Peter; Zahl: 5; Position: A 9
+Spieler: Paul; Zahl: 1; Position: A 2
+Spieler: Maria; Zahl: 2; Position: A 4
+Spieler: Cebra; Zahl: 3; Position: E 9
+Spieler: Monty; Zahl: 3; Position: E 6
+Spieler: Peter; Zahl: 1; Position: A 10
+Spieler: Paul; Zahl: 4; Position: E 6
+Spieler: Maria; Zahl: 1; Position: A 5
+Cebra hat gewonnen!
