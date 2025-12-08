@@ -1,0 +1,34 @@
+main menu
+Choose mode:
+0 - fill
+1 - prepare
+2 - exit
+fill
+Choose ingredient:
+0 - beans
+1 - chocolate
+2 - tea
+3 - water
+4 - milk
+Amount?
+beans: 100 / 500, chocolate: 0 / 250, tea: 0 / 3, water: 200 / 1000, milk: 0 / 750
+Done (y/N)?
+main menu
+Choose mode:
+0 - fill
+1 - prepare
+2 - exit
+prepare
+Choose your drink:
+0 - coffee
+1 - latte macchiato
+2 - espresso
+3 - hot chocolate
+4 - tea
+Preparing coffee
+main menu
+Choose mode:
+0 - fill
+1 - prepare
+2 - exit
+Exit
