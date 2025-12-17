@@ -1,0 +1,37 @@
+typedef enum { SCHERE, STEIN, PAPIER, NUM_OPTIONS} options_t;
+
+cost chat * OPTIONS[] = {Schere, Schtein,Papier};
+#define MIN_RUNS 3
+
+cost int WINNER[NUM_OPTIONS][NUM_OPTIONS] = {(0, 0,1),(1,0,0),(0,1,0)};
+
+int main() 
+{
+ srand(time(NULL));
+unsigned runs = 0;
+ while(runs < MIN_RUNS || playerpoints == computerPoints){
+ 
+ unsigned playerchoice , computerChoice ;
+ do{
+for(unsigned i = 0; I < NUM_OPTIONS; i++) 
+{
+printf("Choose wisely!\n");
+printf(" %u - %s", i, OPTIONS[i]);
+} 
+scanf("%u", &playerchoice);
+} while(playerchoice >= NUM_OPTIONS);
+computerChoice = rand() % NUM_OPTIONS;
+playerPoints += WINNER[playerchoice] [computerChoice]
+computerPoints += WINNER[playerchoice] [computerChoice]
+runs++;
+}
+if(playerPoints > computerPoints) {
+printf("\nPlayer wins!\n\n");
+} 
+else
+{
+printf("\nComputer wins!\n\n");
+} 
+return 0;
+} 
+
